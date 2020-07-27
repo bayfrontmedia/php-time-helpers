@@ -11,6 +11,8 @@
 
 namespace Bayfront\TimeHelpers;
 
+use DateTime;
+use DateTimeZone;
 use Bayfront\ArrayHelpers\Arr;
 
 class Time
@@ -256,6 +258,115 @@ class Time
 
         return rtrim($return);
 
+    }
+
+    /*
+     * ############################################################
+     * Dates & times
+     *
+     * Dates used can be any valid date/time format
+     *
+     * See: https://www.php.net/manual/en/datetime.formats.php
+     * ############################################################
+     */
+
+    /**
+     * Checks if string is a valid timezone identifier
+     *
+     * See: https://www.php.net/manual/en/timezones.php
+     *
+     * @param string $timezone
+     *
+     * @return bool
+     */
+
+    public static function timezone(string $timezone): bool
+    {
+        return (in_array($timezone, DateTimeZone::listIdentifiers())) ? true : false;
+    }
+
+    /**
+     * Checks if value is a given dateTime format
+     *
+     * @param string $date
+     * @param string $format (Required date format)
+     * @param bool $strict
+     *
+     * @return bool
+     */
+
+    public static function dateFormat(string $date, string $format = '', $strict = true): bool
+    {
+        $dateTime = DateTime::createFromFormat($format, $date);
+
+        if ($strict) {
+
+            $errors = DateTime::getLastErrors();
+
+            if (!empty($errors['warning_count'])) {
+
+                return false;
+
+            }
+
+        }
+
+        return $dateTime !== false;
+
+    }
+
+    /**
+     * Checks if date/time is in past
+     *
+     * @param string $date
+     *
+     * @return bool
+     */
+
+    public static function inPast(string $date): bool
+    {
+        return strtotime($date) < time();
+    }
+
+    /**
+     * Checks if date/time is in past
+     *
+     * @param string $date
+     *
+     * @return bool
+     */
+
+    public static function inFuture(string $date): bool
+    {
+        return strtotime($date) > time();
+    }
+
+    /**
+     * Checks if date/time is before a given date/time
+     *
+     * @param string $date
+     * @param string $before
+     *
+     * @return bool
+     */
+
+    public static function before(string $date, string $before): bool
+    {
+        return strtotime($date) < strtotime($before);
+    }
+
+    /**
+     * Checks if date/time is after a given date/time
+     *
+     * @param string $date
+     * @param string $after
+     *
+     * @return bool
+     */
+
+    public static function after(string $date, string $after): bool
+    {
+        return strtotime($date) > strtotime($after);
     }
 
 }

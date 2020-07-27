@@ -33,6 +33,12 @@ composer require bayfrontmedia/php-time-helpers
 - [isLeapYear](#isleapyear)
 - [humanArray](#humanarray)
 - [human](#human)
+- [timezone](#timezone)
+- [dateFormat](#dateformat)
+- [inPast](#inpast)
+- [inFuture](#infuture)
+- [before](#before)
+- [after](#after)
 
 <hr />
 
@@ -210,3 +216,157 @@ $end = time() + 51001;
 
 echo Time::human($start, $end);
 ```
+
+<hr />
+
+### timezone
+
+**Description:**
+
+Checks if string is a valid timezone identifier.
+
+See: [https://www.php.net/manual/en/timezones.php](https://www.php.net/manual/en/timezones.php)
+
+**Parameters:**
+
+- `$timezone` (string)
+
+**Returns:**
+
+- (bool)
+
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+if (Time::timezone('America/New_York')) {
+    // Do something
+}
+```
+
+<hr />
+
+### dateFormat
+
+**Description:**
+
+Checks if value is a given dateTime format
+
+See: [https://www.php.net/manual/en/function.date.php](https://www.php.net/manual/en/function.date.php)
+
+**Parameters:**
+
+- `$date` (string)
+- `$format` (string)
+- `$strict = 'true'` (bool)
+
+**Returns:**
+
+- (bool)
+
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+$date = '2020-07-18';
+
+if (Time::dateFormat($date, 'Y-m-d')) {
+    // Do something
+}
+```
+
+<hr />
+
+### inPast
+
+**Description:**
+
+Checks if date/time is in past
+
+See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
+
+**Parameters:**
+
+- `$date` (string)
+
+**Returns:**
+
+- (bool)
+
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+if (Time::inPast('last Tuesday')) {
+    // Do something
+}
+```
+
+<hr />
+
+### inFuture
+
+**Description:**
+
+Checks if date/time is in future
+
+See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
+
+**Parameters:**
+
+- `$date` (string)
+
+**Returns:**
+
+- (bool)
+
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+if (Time::inFuture('next Tuesday')) {
+    // Do something
+}
+```
+
+<hr />
+
+### before
+
+**Description:**
+
+Checks if date/time is before a given date/time
+
+See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
+
+**Parameters:**
+
+- `$date` (string)
+- `$before` (string)
+
+**Returns:**
+
+- (bool)
+
+<hr />
+
+### after
+
+**Description:**
+
+Checks if date/time is after a given date/time
+
+See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
+
+**Parameters:**
+
+- `$date` (string)
+- `$after` (string)
+
+**Returns:**
+
+- (bool)
