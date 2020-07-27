@@ -33,12 +33,12 @@ composer require bayfrontmedia/php-time-helpers
 - [isLeapYear](#isleapyear)
 - [humanArray](#humanarray)
 - [human](#human)
-- [timezone](#timezone)
-- [dateFormat](#dateformat)
+- [isTimezone](#istimezone)
+- [isFormat](#isformat)
 - [inPast](#inpast)
 - [inFuture](#infuture)
-- [before](#before)
-- [after](#after)
+- [isBefore](#isbefore)
+- [isAfter](#isafter)
 
 <hr />
 
@@ -219,7 +219,7 @@ echo Time::human($start, $end);
 
 <hr />
 
-### timezone
+### isTimezone
 
 **Description:**
 
@@ -240,14 +240,14 @@ See: [https://www.php.net/manual/en/timezones.php](https://www.php.net/manual/en
 ```
 use Bayfront\TimeHelpers\Time;
 
-if (Time::timezone('America/New_York')) {
+if (Time::isTimezone('America/New_York')) {
     // Do something
 }
 ```
 
 <hr />
 
-### dateFormat
+### isFormat
 
 **Description:**
 
@@ -258,7 +258,7 @@ See: [https://www.php.net/manual/en/function.date.php](https://www.php.net/manua
 **Parameters:**
 
 - `$date` (string)
-- `$format` (string)
+- `$format` (string): Any valid date/time format
 - `$strict = 'true'` (bool)
 
 **Returns:**
@@ -272,7 +272,7 @@ use Bayfront\TimeHelpers\Time;
 
 $date = '2020-07-18';
 
-if (Time::dateFormat($date, 'Y-m-d')) {
+if (Time::isFormat($date, 'Y-m-d')) {
     // Do something
 }
 ```
@@ -289,7 +289,7 @@ See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/ma
 
 **Parameters:**
 
-- `$date` (string)
+- `$date` (string): Any valid date/time format
 
 **Returns:**
 
@@ -317,7 +317,7 @@ See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/ma
 
 **Parameters:**
 
-- `$date` (string)
+- `$date` (string): Any valid date/time format
 
 **Returns:**
 
@@ -328,14 +328,14 @@ See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/ma
 ```
 use Bayfront\TimeHelpers\Time;
 
-if (Time::inFuture('next Tuesday')) {
+if (Time::inFuture('2050-12-31')) {
     // Do something
 }
 ```
 
 <hr />
 
-### before
+### isBefore
 
 **Description:**
 
@@ -345,16 +345,26 @@ See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/ma
 
 **Parameters:**
 
-- `$date` (string)
-- `$before` (string)
+- `$date` (string): Any valid date/time format
+- `$before` (string): Any valid date/time format
 
 **Returns:**
 
 - (bool)
 
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+if (Time::isBefore('today', '2050-12-31')) {
+    // Do something
+}
+```
+
 <hr />
 
-### after
+### isAfter
 
 **Description:**
 
@@ -364,9 +374,19 @@ See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/ma
 
 **Parameters:**
 
-- `$date` (string)
-- `$after` (string)
+- `$date` (string): Any valid date/time format
+- `$after` (string): Any valid date/time format
 
 **Returns:**
 
 - (bool)
+
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+if (Time::isAfter('today', '2050-12-31')) {
+    // Do something
+}
+```

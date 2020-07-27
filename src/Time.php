@@ -260,16 +260,6 @@ class Time
 
     }
 
-    /*
-     * ############################################################
-     * Dates & times
-     *
-     * Dates used can be any valid date/time format
-     *
-     * See: https://www.php.net/manual/en/datetime.formats.php
-     * ############################################################
-     */
-
     /**
      * Checks if string is a valid timezone identifier
      *
@@ -280,7 +270,7 @@ class Time
      * @return bool
      */
 
-    public static function timezone(string $timezone): bool
+    public static function isTimezone(string $timezone): bool
     {
         return (in_array($timezone, DateTimeZone::listIdentifiers())) ? true : false;
     }
@@ -289,13 +279,13 @@ class Time
      * Checks if value is a given dateTime format
      *
      * @param string $date
-     * @param string $format (Required date format)
+     * @param string $format (Any valid date/time format)
      * @param bool $strict
      *
      * @return bool
      */
 
-    public static function dateFormat(string $date, string $format = '', $strict = true): bool
+    public static function isFormat(string $date, string $format, $strict = true): bool
     {
         $dateTime = DateTime::createFromFormat($format, $date);
 
@@ -318,7 +308,7 @@ class Time
     /**
      * Checks if date/time is in past
      *
-     * @param string $date
+     * @param string $date (Any valid date/time format)
      *
      * @return bool
      */
@@ -331,7 +321,7 @@ class Time
     /**
      * Checks if date/time is in past
      *
-     * @param string $date
+     * @param string $date (Any valid date/time format)
      *
      * @return bool
      */
@@ -344,13 +334,13 @@ class Time
     /**
      * Checks if date/time is before a given date/time
      *
-     * @param string $date
-     * @param string $before
+     * @param string $date (Any valid date/time format)
+     * @param string $before (Any valid date/time format)
      *
      * @return bool
      */
 
-    public static function before(string $date, string $before): bool
+    public static function isBefore(string $date, string $before): bool
     {
         return strtotime($date) < strtotime($before);
     }
@@ -358,13 +348,13 @@ class Time
     /**
      * Checks if date/time is after a given date/time
      *
-     * @param string $date
-     * @param string $after
+     * @param string $date (Any valid date/time format)
+     * @param string $after (Any valid date/time format)
      *
      * @return bool
      */
 
-    public static function after(string $date, string $after): bool
+    public static function isAfter(string $date, string $after): bool
     {
         return strtotime($date) > strtotime($after);
     }
