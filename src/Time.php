@@ -134,24 +134,16 @@ class Time
     /**
      * Returns human time as an array.
      *
-     * @param int|null $time_start (Timestamp of starting time)
-     * @param int|null $time_end (Timestamp of ending time)
+     * @param int $time_start (Timestamp of starting time)
+     * @param int $time_end (Timestamp of ending time)
      * @param string $limit (Limit of time duration to calculate)
      * @param array|null $language (Custom language to return)
      *
      * @return array
      */
 
-    public static function humanArray(int $time_start = NULL, int $time_end = NULL, string $limit = 'year', array $language = NULL): array
+    public static function humanArray(int $time_start, int $time_end, string $limit = 'year', array $language = NULL): array
     {
-
-        if (NULL === $time_start) {
-            $time_start = time();
-        }
-
-        if (NULL === $time_end) {
-            $time_end = time();
-        }
 
         if (!is_array($language) || (Arr::isMissing($language, self::$language_keys))) {
             $language = self::$language;
@@ -221,15 +213,15 @@ class Time
     /**
      * Returns human time as a string.
      *
-     * @param int|null $time_start (Timestamp of starting time)
-     * @param int|null $time_end (Timestamp of ending time)
+     * @param int $time_start (Timestamp of starting time)
+     * @param int $time_end (Timestamp of ending time)
      * @param string $limit (Limit of time duration to calculate)
      * @param array|null $language (Custom language to return)
      *
      * @return string
      */
 
-    public static function human(int $time_start = NULL, int $time_end = NULL, string $limit = 'year', array $language = NULL): string
+    public static function human(int $time_start, int $time_end, string $limit = 'year', array $language = NULL): string
     {
 
         $arr = self::humanArray($time_start, $time_end, $limit, $language);

@@ -78,7 +78,7 @@ Returns datetime of a given timestamp, or current time (default).
 
 **Parameters:**
 
-- `$timestamp` (int)
+- `$timestamp = NULL` (int|null)
 
 **Returns:**
 
@@ -103,11 +103,11 @@ Checks if a given year is a leap year, using current year by default.
 
 **Parameters:**
 
-- `$year` (int): Four digit year, PHP `date('Y')` format
+- `$year = NULL` (int|null): Four digit year, PHP `date('Y')` format
 
 **Returns:**
 
-- (string)
+- (bool)
 
 **Example:**
 
@@ -134,7 +134,7 @@ Returns human time as an array.
 - `$time_start` (int): Timestamp of starting time
 - `$time_end` (int): Timestamp of ending time
 - `$limit = 'year'` (string): Limit of time duration to calculate
-- `$language` (array): Custom language to return
+- `$language = NULL` (array|null): Custom language to return
 
 Valid `$limit` values are:
 
@@ -200,7 +200,7 @@ For more information, see [humanArray](#humanarray).
 - `$time_start` (int): Timestamp of starting time
 - `$time_end` (int): Timestamp of ending time
 - `$limit = 'year'` (string): Limit of time duration to calculate
-- `$language` (array): Custom language to return
+- `$language = NULL` (array| null): Custom language to return
 
 **Returns:**
 
@@ -251,7 +251,7 @@ if (Time::isTimezone('America/New_York')) {
 
 **Description:**
 
-Checks if value is a given dateTime format
+Checks if value is a given dateTime format.
 
 See: [https://www.php.net/manual/en/function.date.php](https://www.php.net/manual/en/function.date.php)
 
@@ -283,7 +283,7 @@ if (Time::isFormat($date, 'Y-m-d')) {
 
 **Description:**
 
-Checks if date/time is in past
+Checks if date/time is in past.
 
 See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
 
@@ -311,7 +311,7 @@ if (Time::inPast('last Tuesday')) {
 
 **Description:**
 
-Checks if date/time is in future
+Checks if date/time is in future.
 
 See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
 
@@ -339,7 +339,7 @@ if (Time::inFuture('2050-12-31')) {
 
 **Description:**
 
-Checks if date/time is before a given date/time
+Checks if date/time is before a given date/time.
 
 See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
 
@@ -368,7 +368,7 @@ if (Time::isBefore('today', '2050-12-31')) {
 
 **Description:**
 
-Checks if date/time is after a given date/time
+Checks if date/time is after a given date/time.
 
 See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
 
