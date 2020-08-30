@@ -1,12 +1,10 @@
 <?php
+
 /**
- * Helper class to provide useful time related functions
- *
- * @version     1.0.0
- * @link        https://github.com/bayfrontmedia/php-time-helpers
- * @license     MIT https://opensource.org/licenses/MIT
- * @copyright   2020 Bayfront Media https://www.bayfrontmedia.com
- * @author      John Robinson <john@bayfrontmedia.com>
+ * @package php-time-helpers
+ * @link https://github.com/bayfrontmedia/php-time-helpers
+ * @author John Robinson <john@bayfrontmedia.com>
+ * @copyright 2020 Bayfront Media
  */
 
 namespace Bayfront\TimeHelpers;
@@ -20,10 +18,10 @@ class Time
 
     /**
      * Get estimated minutes necessary to read content, based on
-     * reading a given amount of words per minute (WPM)
+     * reading a given amount of words per minute (WPM).
      *
-     * @param $content string
-     * @param $wpm int
+     * @param string $content
+     * @param int $wpm
      *
      * @return int (Read time in minutes)
      */
@@ -46,9 +44,9 @@ class Time
     }
 
     /**
-     * Returns datetime of a given timestamp, or current time (default)
+     * Returns datetime of a given timestamp, or current time (default).
      *
-     * @param $timestamp int
+     * @param int|null $timestamp
      *
      * @return string
      */
@@ -67,9 +65,9 @@ class Time
     }
 
     /**
-     * Checks if a given year is a leap year using current year by default
+     * Checks if a given year is a leap year using current year by default.
      *
-     * @param $year int (Four digit year, PHP date('Y') format)
+     * @param int|null $year (Four digit year, PHP date('Y') format)
      *
      * @return bool
      */
@@ -134,12 +132,12 @@ class Time
     ];
 
     /**
-     * Returns human time as an array
+     * Returns human time as an array.
      *
-     * @param int $time_start (Timestamp of starting time)
-     * @param int $time_end (Timestamp of ending time)
+     * @param int|null $time_start (Timestamp of starting time)
+     * @param int|null $time_end (Timestamp of ending time)
      * @param string $limit (Limit of time duration to calculate)
-     * @param array $language (Custom language to return)
+     * @param array|null $language (Custom language to return)
      *
      * @return array
      */
@@ -221,12 +219,12 @@ class Time
     }
 
     /**
-     * Returns human time as a string
+     * Returns human time as a string.
      *
-     * @param int $time_start (Timestamp of starting time)
-     * @param int $time_end (Timestamp of ending time)
+     * @param int|null $time_start (Timestamp of starting time)
+     * @param int|null $time_end (Timestamp of ending time)
      * @param string $limit (Limit of time duration to calculate)
-     * @param array $language (Custom language to return)
+     * @param array|null $language (Custom language to return)
      *
      * @return string
      */
@@ -261,7 +259,7 @@ class Time
     }
 
     /**
-     * Checks if string is a valid timezone identifier
+     * Checks if string is a valid timezone identifier.
      *
      * See: https://www.php.net/manual/en/timezones.php
      *
@@ -276,7 +274,7 @@ class Time
     }
 
     /**
-     * Checks if value is a given dateTime format
+     * Checks if value is a given dateTime format.
      *
      * @param string $date
      * @param string $format (Any valid date/time format)
@@ -306,7 +304,7 @@ class Time
     }
 
     /**
-     * Checks if date/time is in past
+     * Checks if date/time is in past.
      *
      * @param string $date (Any valid date/time format)
      *
@@ -319,7 +317,7 @@ class Time
     }
 
     /**
-     * Checks if date/time is in past
+     * Checks if date/time is in past.
      *
      * @param string $date (Any valid date/time format)
      *
@@ -332,7 +330,7 @@ class Time
     }
 
     /**
-     * Checks if date/time is before a given date/time
+     * Checks if date/time is before a given date/time.
      *
      * @param string $date (Any valid date/time format)
      * @param string $before (Any valid date/time format)
@@ -346,7 +344,7 @@ class Time
     }
 
     /**
-     * Checks if date/time is after a given date/time
+     * Checks if date/time is after a given date/time.
      *
      * @param string $date (Any valid date/time format)
      * @param string $after (Any valid date/time format)
