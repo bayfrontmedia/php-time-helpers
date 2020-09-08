@@ -3,7 +3,7 @@
   "description": "Helper class to provide useful time related functions.",
   "homepage": "https://github.com/bayfrontmedia/php-time-helpers",
   "license" : "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "library",
   "keywords": [
     "php",

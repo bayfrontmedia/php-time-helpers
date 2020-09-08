@@ -39,6 +39,7 @@ composer require bayfrontmedia/php-time-helpers
 - [inFuture](#infuture)
 - [isBefore](#isbefore)
 - [isAfter](#isafter)
+- [stopwatch](#stopwatch)
 
 <hr />
 
@@ -283,7 +284,7 @@ if (Time::isFormat($date, 'Y-m-d')) {
 
 **Description:**
 
-Checks if date/time is in past.
+Checks if date/time is in the past.
 
 See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
 
@@ -311,7 +312,7 @@ if (Time::inPast('last Tuesday')) {
 
 **Description:**
 
-Checks if date/time is in future.
+Checks if date/time is in the future.
 
 See: [https://www.php.net/manual/en/datetime.formats.php](https://www.php.net/manual/en/datetime.formats.php)
 
@@ -389,4 +390,34 @@ use Bayfront\TimeHelpers\Time;
 if (Time::isAfter('today', '2050-12-31')) {
     // Do something
 }
+```
+
+<hr />
+
+### stopwatch
+
+**Description:**
+
+Return the amount of time (in seconds) the callback took to execute.
+
+**Parameters:**
+
+- `$callable` (callback)
+- `$times = 1` (int): Number of times to iterate the callback
+- `$decimals = 5` (int): Number of decimal places to round to
+
+**Returns:**
+
+- (float)
+
+**Example:**
+
+```
+use Bayfront\TimeHelpers\Time;
+
+$elapsed = Time::stopwatch(function() {
+
+    sleep(2);
+
+}, 2);
 ```

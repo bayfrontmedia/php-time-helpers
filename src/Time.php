@@ -296,7 +296,7 @@ class Time
     }
 
     /**
-     * Checks if date/time is in past.
+     * Checks if date/time is in the past.
      *
      * @param string $date (Any valid date/time format)
      *
@@ -309,7 +309,7 @@ class Time
     }
 
     /**
-     * Checks if date/time is in past.
+     * Checks if date/time is in the future.
      *
      * @param string $date (Any valid date/time format)
      *
@@ -347,6 +347,37 @@ class Time
     public static function isAfter(string $date, string $after): bool
     {
         return strtotime($date) > strtotime($after);
+    }
+
+    /**
+     * Return the amount of time (in seconds) the callback took to execute.
+     *
+     * @param callable $callback
+     * @param int $times (Number of times to iterate the callback)
+     * @param int $decimals (Number of decimal places to round to)
+     *
+     * @return float
+     */
+
+    public static function stopwatch(callable $callback, int $times = 1, int $decimals = 5): float
+    {
+
+        $start = microtime(true);
+
+        $i = 0;
+
+        while ($i < $times) {
+
+            $i++;
+
+            $callback();
+
+        }
+
+        $end = microtime(true);
+
+        return round($end - $start, $decimals);
+
     }
 
 }
