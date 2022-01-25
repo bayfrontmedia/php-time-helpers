@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @package php-time-helpers
- * @link https://github.com/bayfrontmedia/php-time-helpers
- * @author John Robinson <john@bayfrontmedia.com>
- * @copyright 2020 Bayfront Media
- */
-
 namespace Bayfront\TimeHelpers;
 
 use DateTime;
@@ -29,7 +22,7 @@ class Time
     public static function getReadTime(string $content, int $wpm = 180): int
     {
 
-        $words = str_word_count($content, 0); // Number of words in content
+        $words = str_word_count($content); // Number of words in content
 
         $minutes = round($words / $wpm); // Minutes required
 
@@ -152,7 +145,7 @@ class Time
         $diff = $time_end - $time_start;
 
         if ($diff == 0) {
-            return ['tense' => $language['just_now']];
+            return ['tense' => $language['present']];
         }
 
         $types = [
@@ -262,7 +255,7 @@ class Time
 
     public static function isTimezone(string $timezone): bool
     {
-        return (in_array($timezone, DateTimeZone::listIdentifiers())) ? true : false;
+        return in_array($timezone, DateTimeZone::listIdentifiers());
     }
 
     /**
@@ -275,7 +268,7 @@ class Time
      * @return bool
      */
 
-    public static function isFormat(string $date, string $format, $strict = true): bool
+    public static function isFormat(string $date, string $format, bool $strict = true): bool
     {
         $dateTime = DateTime::createFromFormat($format, $date);
 
