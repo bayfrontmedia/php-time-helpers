@@ -80,7 +80,7 @@ class Time
      * Required keys for a language array
      */
 
-    private static $language_keys = [
+    private static array $language_keys = [
         'year',
         'years',
         'month',
@@ -104,7 +104,7 @@ class Time
      * Default language array
      */
 
-    private static $language = [
+    private static array $language = [
         'year' => 'year',
         'years' => 'years',
         'month' => 'month',
