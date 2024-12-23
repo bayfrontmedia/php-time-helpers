@@ -44,7 +44,7 @@ class Time
      * @return string
      */
 
-    public static function getDateTime(int $timestamp = NULL): string
+    public static function getDateTime(?int $timestamp = NULL): string
     {
 
         if (NULL === $timestamp) {
@@ -65,7 +65,7 @@ class Time
      * @return bool
      */
 
-    public static function isLeapYear(int $year = NULL): bool
+    public static function isLeapYear(?int $year = NULL): bool
     {
 
         if (NULL === $year) {
@@ -135,7 +135,7 @@ class Time
      * @return array
      */
 
-    public static function humanArray(int $time_start, int $time_end, string $limit = 'year', array $language = NULL): array
+    public static function humanArray(int $time_start, int $time_end, string $limit = 'year', ?array $language = NULL): array
     {
 
         if (!is_array($language) || (Arr::isMissing($language, self::$language_keys))) {
@@ -214,7 +214,7 @@ class Time
      * @return string
      */
 
-    public static function human(int $time_start, int $time_end, string $limit = 'year', array $language = NULL): string
+    public static function human(int $time_start, int $time_end, string $limit = 'year', ?array $language = NULL): string
     {
 
         $arr = self::humanArray($time_start, $time_end, $limit, $language);
