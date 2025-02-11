@@ -15,10 +15,8 @@ class Time
      *
      * @param string $content
      * @param int $wpm
-     *
      * @return int (Read time in minutes)
      */
-
     public static function getReadTime(string $content, int $wpm = 180): int
     {
 
@@ -27,9 +25,7 @@ class Time
         $minutes = round($words / $wpm); // Minutes required
 
         if ($minutes < 1) {
-
             return 1;
-
         }
 
         return $minutes;
@@ -40,17 +36,13 @@ class Time
      * Returns datetime of a given timestamp, or current time (default).
      *
      * @param int|null $timestamp
-     *
      * @return string
      */
-
     public static function getDateTime(?int $timestamp = NULL): string
     {
 
         if (NULL === $timestamp) {
-
             $timestamp = time();
-
         }
 
         return date('Y-m-d H:i:s', $timestamp);
@@ -61,10 +53,8 @@ class Time
      * Checks if a given year is a leap year using current year by default.
      *
      * @param int|null $year (Four digit year, PHP date('Y') format)
-     *
      * @return bool
      */
-
     public static function isLeapYear(?int $year = NULL): bool
     {
 
@@ -131,10 +121,8 @@ class Time
      * @param int $time_end (Timestamp of ending time)
      * @param string $limit (Limit of time duration to calculate)
      * @param array|null $language (Custom language to return)
-     *
      * @return array
      */
-
     public static function humanArray(int $time_start, int $time_end, string $limit = 'year', ?array $language = NULL): array
     {
 
@@ -163,10 +151,8 @@ class Time
         $type = $language['future'];
 
         if ($diff < 0) { // If in the past
-
             $type = $language['past'];
             $diff = abs($diff);
-
         }
 
         $found = false;
@@ -182,13 +168,9 @@ class Time
             $total = floor($diff / $v);
 
             if ($total != 1) {
-
                 $k = $language[$k . 's']; // Get plural translation
-
             } else {
-
                 $k = $language[$k]; // Singular translation
-
             }
 
             $return[$k] = $total;
@@ -210,10 +192,8 @@ class Time
      * @param int $time_end (Timestamp of ending time)
      * @param string $limit (Limit of time duration to calculate)
      * @param array|null $language (Custom language to return)
-     *
      * @return string
      */
-
     public static function human(int $time_start, int $time_end, string $limit = 'year', ?array $language = NULL): string
     {
 
@@ -224,17 +204,11 @@ class Time
         foreach ($arr as $k => $v) {
 
             if (is_numeric($v) && $v == 0) { // Skip zero values
-
                 continue;
-
             } else if (!is_numeric($v)) {
-
                 $return .= $v . ' ';
-
             } else {
-
                 $return .= $v . ' ' . $k . ' ';
-
             }
 
         }
@@ -244,15 +218,38 @@ class Time
     }
 
     /**
+     * Convert UTC datetime to format using timezone.
+     *
+     * See: https://www.php.net/manual/en/timezones.php
+     *
+     * @param int|string $datetime (Any valid date/time formated string or timestamp)
+     * @param string $timezone (Any valid timezone identifier)
+     * @param string $format (Any valid date/time format)
+     * @return string
+     */
+    public function toTimezone(int|string $datetime, string $timezone, string $format = 'U'): string
+    {
+
+        $dt = new DateTime();
+        $dt->setTimezone(new DateTimeZone($timezone));
+
+        if (is_string($datetime)) {
+            $datetime = strtotime($datetime);
+        }
+
+        $dt->setTimestamp($datetime);
+        return $dt->format($format);
+
+    }
+
+    /**
      * Checks if string is a valid timezone identifier.
      *
      * See: https://www.php.net/manual/en/timezones.php
      *
      * @param string $timezone
-     *
      * @return bool
      */
-
     public static function isTimezone(string $timezone): bool
     {
         return in_array($timezone, DateTimeZone::listIdentifiers());
@@ -261,13 +258,13 @@ class Time
     /**
      * Checks if value is a given dateTime format.
      *
+     * See: https://www.php.net/manual/en/function.date.php
+     *
      * @param string $date
      * @param string $format (Any valid date/time format)
      * @param bool $strict
-     *
      * @return bool
      */
-
     public static function isFormat(string $date, string $format, bool $strict = true): bool
     {
         $dateTime = DateTime::createFromFormat($format, $date);
@@ -277,9 +274,7 @@ class Time
             $errors = DateTime::getLastErrors();
 
             if (!empty($errors['warning_count'])) {
-
                 return false;
-
             }
 
         }
@@ -291,11 +286,11 @@ class Time
     /**
      * Checks if date/time is in the past.
      *
-     * @param string $date (Any valid date/time format)
+     * See:  https://www.php.net/manual/en/datetime.formats.php
      *
+     * @param string $date (Any valid date/time format)
      * @return bool
      */
-
     public static function inPast(string $date): bool
     {
         return strtotime($date) < time();
@@ -304,11 +299,11 @@ class Time
     /**
      * Checks if date/time is in the future.
      *
-     * @param string $date (Any valid date/time format)
+     * See: https://www.php.net/manual/en/datetime.formats.php
      *
+     * @param string $date (Any valid date/time format)
      * @return bool
      */
-
     public static function inFuture(string $date): bool
     {
         return strtotime($date) > time();
@@ -317,12 +312,12 @@ class Time
     /**
      * Checks if date/time is before a given date/time.
      *
+     * See: https://www.php.net/manual/en/datetime.formats.php
+     *
      * @param string $date (Any valid date/time format)
      * @param string $before (Any valid date/time format)
-     *
      * @return bool
      */
-
     public static function isBefore(string $date, string $before): bool
     {
         return strtotime($date) < strtotime($before);
@@ -331,12 +326,12 @@ class Time
     /**
      * Checks if date/time is after a given date/time.
      *
+     * See: https://www.php.net/manual/en/datetime.formats.php
+     *
      * @param string $date (Any valid date/time format)
      * @param string $after (Any valid date/time format)
-     *
      * @return bool
      */
-
     public static function isAfter(string $date, string $after): bool
     {
         return strtotime($date) > strtotime($after);
@@ -348,10 +343,8 @@ class Time
      * @param callable $callback
      * @param int $times (Number of times to iterate the callback)
      * @param int $decimals (Number of decimal places to round to)
-     *
      * @return float
      */
-
     public static function stopwatch(callable $callback, int $times = 1, int $decimals = 5): float
     {
 
@@ -360,11 +353,8 @@ class Time
         $i = 0;
 
         while ($i < $times) {
-
             $i++;
-
             $callback();
-
         }
 
         $end = microtime(true);

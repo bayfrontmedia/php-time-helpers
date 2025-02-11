@@ -36,6 +36,7 @@ composer require bayfrontmedia/php-time-helpers
 - [isLeapYear](#isleapyear)
 - [humanArray](#humanarray)
 - [human](#human)
+- [toTimezone](#totimezone)
 - [isTimezone](#istimezone)
 - [isFormat](#isformat)
 - [inPast](#inpast)
@@ -220,6 +221,26 @@ $end = time() + 51001;
 
 echo Time::human($start, $end);
 ```
+
+<hr />
+
+### toTimezone
+
+**Description:**
+
+Convert UTC datetime to format using timezone.
+
+See: [https://www.php.net/manual/en/timezones.php](https://www.php.net/manual/en/timezones.php)
+
+**Parameters:**
+
+- `$datetime` (int|string): Any valid date/time formatted string or timestamp
+- `$timezone` (string): Any valid timezone identifier
+- `$format = 'U'` (string): Any valid date/time format
+
+**Returns:**
+
+- (string)
 
 <hr />
 
