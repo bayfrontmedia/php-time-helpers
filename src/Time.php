@@ -227,7 +227,7 @@ class Time
      * @param string $format (Any valid date/time format)
      * @return string
      */
-    public function toTimezone(int|string $datetime, string $timezone, string $format = 'U'): string
+    public static function toTimezone(int|string $datetime, string $timezone, string $format = 'U'): string
     {
 
         $dt = new DateTime();
