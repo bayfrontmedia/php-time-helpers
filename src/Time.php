@@ -218,6 +218,17 @@ class Time
     }
 
     /**
+     * Convert UTC datetime to ISO-8601 format.
+     *
+     * @param int|string $datetime (Any valid date/time formated string or timestamp)
+     * @return string
+     */
+    public static function toIso8601(int|string $datetime): string
+    {
+        return self::toTimezone($datetime, 'UTC', 'Y-m-d\TH:i:sp');
+    }
+
+    /**
      * Convert UTC datetime to format using timezone.
      *
      * See: https://www.php.net/manual/en/timezones.php

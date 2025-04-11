@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities
 
+## [2.2.0] - 2025.04.10
+
+### Added
+
+- Added `toIso8601` method.
+
 ## [2.1.0] - 2025.02.11
 
 ### Added

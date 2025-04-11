@@ -36,6 +36,7 @@ composer require bayfrontmedia/php-time-helpers
 - [isLeapYear](#isleapyear)
 - [humanArray](#humanarray)
 - [human](#human)
+- [toIso8601](#toiso8601)
 - [toTimezone](#totimezone)
 - [isTimezone](#istimezone)
 - [isFormat](#isformat)
@@ -221,6 +222,23 @@ $end = time() + 51001;
 
 echo Time::human($start, $end);
 ```
+
+<hr />
+
+
+### toIso8601
+
+**Description:**
+
+Convert UTC datetime to ISO-8601 format.
+
+**Parameters:**
+
+- `$datetime` (int|string): Any valid date/time formatted string or timestamp
+
+**Returns:**
+
+- (string)
 
 <hr />
 
