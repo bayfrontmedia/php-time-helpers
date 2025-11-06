@@ -436,7 +436,7 @@ class Time
     /**
      * Get date of the last/next occurring day from a given day and date.
      *
-     * @param string $modifier (last/next)
+     * @param string $modifier (Any valid DAY_* constant)
      * @param int $day (Numeric day)
      * @param string $date (Any valid date/time format)
      * @param string $format (Date format to be returned)
