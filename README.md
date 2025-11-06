@@ -48,7 +48,6 @@ composer require bayfrontmedia/php-time-helpers
 - [isWeekday](#isweekday)
 - [isWeekend](#isweekend)
 - [getRandomDate](#getrandomdate)
-- [getDay](#getday)
 - [lastMonday](#lastmonday)
 - [lastTuesday](#lasttuesday)
 - [lastWednesday](#lastwednesday)
@@ -527,31 +526,6 @@ Get random date between two dates.
 - `$start_date = '1900-01-01` (string): Any valid date/time format
 - `$end_date = null` (string|null): Any valid date/time format. If `null`, the current date will be used
 - `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
-
-**Returns:**
-
-- (string)
-
-<hr />
-
-### getDay
-
-**Description:**
-
-Get date of the last/next occurring day from a given day and date.
-
-**Parameters:**
-
-- `$modifier` (string): Any valid `DAY_*` constant
-- `$day` (int): Numeric day
-- `$date` (string): Any valid date/time format
-- `$format = 'Y-m-d H:i:s'`: Date format to be returned
-- `$include_self = true`: If true, the current date will be returned if it falls on the day provided
-
-`DAY_*` constants include:
-
-- `DAY_LAST`: last
-- `DAY_NEXT`: next
 
 **Returns:**
 
