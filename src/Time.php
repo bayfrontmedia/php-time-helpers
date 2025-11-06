@@ -374,4 +374,270 @@ class Time
 
     }
 
+    /**
+     * Is date a weekday?
+     *
+     * @param string $date (Any valid date/time format))
+     * @return bool
+     */
+    public static function isWeekday(string $date): bool
+    {
+       $day = date('N', strtotime($date));
+       return $day >= 1 && $day <= 5;
+    }
+
+    /**
+     * Is date a weekend?
+     *
+     * @param string $date (Any valid date/time format)
+     * @return bool
+     */
+    public static function isWeekend(string $date): bool
+    {
+        return !self::isWeekday($date);
+    }
+
+    /**
+     * Get random date between two dates.
+     *
+     * @param string $start_date (Any valid date/time format)
+     * @param string|null $end_date (Any valid date/time format. If null, the current date will be used)
+     * @param string $format (Date format to be returned)
+     * @return string
+     */
+    public static function getRandomDate(string $start_date = '1900-01-01', ?string $end_date = null, string $format = 'Y-m-d H:i:s'): string
+    {
+        $start_date = strtotime($start_date);
+
+        if ($end_date === null) {
+            $end_date = time();
+        } else {
+            $end_date = strtotime($end_date);
+        }
+
+        if ($start_date > $end_date) { // Swap if out of order
+            [$start_date, $end_date] = [$end_date, $start_date];
+        }
+
+        $timestamp = mt_rand($start_date, $end_date);
+        return date($format, $timestamp);
+    }
+
+    private static array $days = [
+        1 => 'Monday',
+        2 => 'Tuesday',
+        3 => 'Wednesday',
+        4 => 'Thursday',
+        5 => 'Friday',
+        6 => 'Saturday',
+        7 => 'Sunday'
+    ];
+
+    /**
+     * Get date of the last/next occurring day from a given day and date.
+     *
+     * @param string $modifier (Any valid DAY_* constant)
+     * @param int $day (Numeric day)
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on the day provided)
+     * @return string
+     */
+    private static function getDay(string $modifier, int $day, string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        $date = new DateTime($date);
+
+        if ($include_self === true && $date->format('N') == $day) {
+            return $date->format($format);
+        }
+
+        $date->modify($modifier . ' ' . self::$days[$day]);
+        return $date->format($format);
+
+    }
+
+    private const DAY_LAST = 'last';
+    private const DAY_NEXT = 'next';
+
+    /**
+     * Get date of the previous occurring Monday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Monday)
+     * @return string
+     */
+    public static function lastMonday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 1, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the previous occurring Tuesday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Tuesday)
+     * @return string
+     */
+    public static function lastTuesday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 2, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the previous occurring Wednesday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Wednesday)
+     * @return string
+     */
+    public static function lastWednesday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 3, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the previous occurring Thursday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Thursday)
+     * @return string
+     */
+    public static function lastThursday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 4, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the previous occurring Friday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Friday)
+     * @return string
+     */
+    public static function lastFriday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 5, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the previous occurring Saturday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Saturday)
+     * @return string
+     */
+    public static function lastSaturday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 6, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the previous occurring Sunday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Sunday)
+     * @return string
+     */
+    public static function lastSunday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_LAST, 7, $date, $format, $include_self);
+    }
+    /**
+     * Get date of the next occurring Monday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Monday)
+     * @return string
+     */
+    public static function nextMonday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 1, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the next occurring Tuesday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Tuesday)
+     * @return string
+     */
+    public static function nextTuesday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 2, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the next occurring Wednesday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Wednesday)
+     * @return string
+     */
+    public static function nextWednesday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 3, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the next occurring Thursday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Thursday)
+     * @return string
+     */
+    public static function nextThursday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 4, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the next occurring Friday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Friday)
+     * @return string
+     */
+    public static function nextFriday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 5, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the next occurring Saturday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Saturday)
+     * @return string
+     */
+    public static function nextSaturday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 6, $date, $format, $include_self);
+    }
+
+    /**
+     * Get date of the next occurring Sunday from a given date.
+     *
+     * @param string $date (Any valid date/time format)
+     * @param string $format (Date format to be returned)
+     * @param bool $include_self (If true, the current date will be returned if it falls on a Sunday)
+     * @return string
+     */
+    public static function nextSunday(string $date, string $format = 'Y-m-d H:i:s', bool $include_self = true): string
+    {
+        return self::getDay(self::DAY_NEXT, 7, $date, $format, $include_self);
+    }
+
 }

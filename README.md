@@ -45,6 +45,23 @@ composer require bayfrontmedia/php-time-helpers
 - [isBefore](#isbefore)
 - [isAfter](#isafter)
 - [stopwatch](#stopwatch)
+- [isWeekday](#isweekday)
+- [isWeekend](#isweekend)
+- [getRandomDate](#getrandomdate)
+- [lastMonday](#lastmonday)
+- [lastTuesday](#lasttuesday)
+- [lastWednesday](#lastwednesday)
+- [lastThursday](#lastthursday)
+- [lastFriday](#lastfriday)
+- [lastSaturday](#lastsaturday)
+- [lastSunday](#lastsunday)
+- [nextMonday](#nextmonday)
+- [nextTuesday](#nexttuesday)
+- [nextWednesday](#nextwednesday)
+- [nextThursday](#nextthursday)
+- [nextFriday](#nextfriday)
+- [nextSaturday](#nextsaturday)
+- [nextSunday](#nextsunday)
 
 <hr />
 
@@ -463,3 +480,305 @@ $elapsed = Time::stopwatch(function() {
 
 }, 2);
 ```
+
+<hr />
+
+### isWeekday
+
+**Description:**
+
+Is date a weekday?
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+
+**Returns:**
+
+- (bool)
+
+<hr />
+
+### isWeekend
+
+**Description:**
+
+Is date a weekend?
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+
+**Returns:**
+
+- (bool)
+
+<hr />
+
+### getRandomDate
+
+**Description:**
+
+Get random date between two dates.
+
+**Parameters:**
+
+- `$start_date = '1900-01-01` (string): Any valid date/time format
+- `$end_date = null` (string|null): Any valid date/time format. If `null`, the current date will be used
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastMonday
+
+**Description:**
+
+Get date of the previous occurring Monday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Monday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastTuesday
+
+**Description:**
+
+Get date of the previous occurring Tuesday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Tuesday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastWednesday
+
+**Description:**
+
+Get date of the previous occurring Wednesday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Wednesday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastThursday
+
+**Description:**
+
+Get date of the previous occurring Thursday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Thursday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastFriday
+
+**Description:**
+
+Get date of the previous occurring Friday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Friday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastSaturday
+
+**Description:**
+
+Get date of the previous occurring Saturday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Saturday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### lastSunday
+
+**Description:**
+
+Get date of the previous occurring Sunday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Sunday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextMonday
+
+**Description:**
+
+Get date of the next occurring Monday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Monday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextTuesday
+
+**Description:**
+
+Get date of the next occurring Tuesday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Tuesday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextWednesday
+
+**Description:**
+
+Get date of the next occurring Wednesday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Wednesday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextThursday
+
+**Description:**
+
+Get date of the next occurring Thursday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Thursday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextFriday
+
+**Description:**
+
+Get date of the next occurring Friday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Friday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextSaturday
+
+**Description:**
+
+Get date of the next occurring Saturday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Saturday
+
+**Returns:**
+
+- (string)
+
+<hr />
+
+### nextSunday
+
+**Description:**
+
+Get date of the next occurring Sunday from a given date.
+
+**Parameters:**
+
+- `$date` (string): Any valid date/time format
+- `$format = 'Y-m-d H:i:s'` (string): Date format to be returned
+- `$include_self = true` (bool): If true, the current date will be returned if it falls on a Sunday
+
+**Returns:**
+
+- (string)
